@@ -67,17 +67,25 @@ export default {
 
             // Emmit events to by catch up for the other AddressMetadata fields
             this.field.addressObject.forEach(element => {
-                if(addressData.hasOwnProperty(element)) {
-                    Nova.$emit('address-metadata-update-' + element, {
-                        value: addressData[element]
-                    })
+                let value = '';
+                // Get value from addressData
+                if (addressData.hasOwnProperty(element)) {
+                    value = addressData[element];
                 }
+                // Get value from placeResultData
+                let res = _.find(placeResultData.address_components, function (addressComponent) {
+                  return _.find(addressComponent.types, function (componentType) {
+                    return componentType == element;
+                  }) !== undefined;
+                });
+                if (res !== undefined) {
+                  value = res.long_name;
+                }
+                // Propagate value to other address fields
+                Nova.$emit('address-metadata-update-' + element, {
+                    value: value
+                })
 
-                if(placeResultData.hasOwnProperty(element)) {
-                    Nova.$emit('address-metadata-update-' + element, {
-                        value: placeResultData[element]
-                    })
-                }
             });
         },
 
