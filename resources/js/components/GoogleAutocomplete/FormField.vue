@@ -11,6 +11,7 @@
                         :country="this.field.countries"
                         :types="this.field.type"
                         v-model="value"
+                        :disabled="isReadonly"
                         v-on:keypress.enter.prevent=""
                         v-on:placechanged="getAddressData">
                 </vue-google-autocomplete>
