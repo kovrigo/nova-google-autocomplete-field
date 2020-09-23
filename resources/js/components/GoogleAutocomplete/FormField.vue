@@ -5,7 +5,7 @@
                 <vue-google-autocomplete
                         ref="address"
                         :id="this.field.name"
-                        class="w-full form-control form-input form-input-bordered"
+                        class="custom-input w-full"
                         :class="errorClasses"
                         :placeholder="placeholder"
                         :country="this.field.countries"
@@ -17,7 +17,7 @@
                 </vue-google-autocomplete>
             </div>
 
-            <p v-if="value != ''" class="my-2 text-success">{{ translate.current_address }}: {{ value }}</p>
+            <p v-if="value != ''" class="my-2"><span class="lowercase">{{ translate.current_address }}</span>: {{ value }}</p>
 
             <p v-if="hasError" class="help-text error-text mt-2 text-danger">
                 {{ firstError }}

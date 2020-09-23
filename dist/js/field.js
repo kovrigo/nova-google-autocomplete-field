@@ -28470,7 +28470,7 @@ var render = function() {
           [
             _c("vue-google-autocomplete", {
               ref: "address",
-              staticClass: "w-full form-control form-input form-input-bordered",
+              staticClass: "custom-input w-full",
               class: _vm.errorClasses,
               attrs: {
                 id: this.field.name,
@@ -28504,10 +28504,11 @@ var render = function() {
         ),
         _vm._v(" "),
         _vm.value != ""
-          ? _c("p", { staticClass: "my-2 text-success" }, [
-              _vm._v(
-                _vm._s(_vm.translate.current_address) + ": " + _vm._s(_vm.value)
-              )
+          ? _c("p", { staticClass: "my-2" }, [
+              _c("span", { staticClass: "lowercase" }, [
+                _vm._v(_vm._s(_vm.translate.current_address))
+              ]),
+              _vm._v(": " + _vm._s(_vm.value))
             ])
           : _vm._e(),
         _vm._v(" "),
