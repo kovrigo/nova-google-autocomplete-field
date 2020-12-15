@@ -4,7 +4,7 @@
             <template slot="field">
                 <input :id="field.name" type="text"
                     :disabled="field.disabled"
-                    class="w-full form-control form-input form-input-bordered"
+                    class="custom-input w-full"
                     :class="errorClasses"
                     :placeholder="field.name"
                     v-model="value"
